@@ -161,7 +161,7 @@ if plsystem() == "Darwin":
 
 # Check if miner is configured, if it isn't, autodetect language
 try:
-    if not Path(RESOURCES_DIR + "/Miner_config.cfg").is_file():
+    if not Path(RESOURCES_DIR + "/Miner_config2.cfg").is_file():
         locale = getdefaultlocale()[0]
         if locale.startswith("es"):
             lang = "spanish"
@@ -190,7 +190,7 @@ try:
     else:
         # Read language variable from configfile
         try:
-            config.read(RESOURCES_DIR + "/Miner_config.cfg")
+            config.read(RESOURCES_DIR + "/Miner_config2.cfg")
             lang = config["Duino-Coin-PC-Miner"]["language"]
         except Exception:
             # If it fails, fallback to english
@@ -418,7 +418,7 @@ def loadConfig():
     global PERIODIC_REPORT_TIME
 
     # Initial configuration
-    if not Path(RESOURCES_DIR + "/Miner_config.cfg").is_file():
+    if not Path(RESOURCES_DIR + "/Miner_config.cfg2").is_file():
         print(
             Style.BRIGHT
             + getString("basic_config_tool")
@@ -536,12 +536,12 @@ def loadConfig():
             "discord_presence": "y"
         }
 
-        with open(RESOURCES_DIR + "/Miner_config.cfg", "w") as configfile:
+        with open(RESOURCES_DIR + "/Miner_config.cfg2", "w") as configfile:
             config.write(configfile)
             print(Style.RESET_ALL + getString("config_saved"))
     else:
         # If config already exists, load data from it
-        config.read(RESOURCES_DIR + "/Miner_config.cfg")
+        config.read(RESOURCES_DIR + "/Miner_config2.cfg")
         username = config["Duino-Coin-PC-Miner"]["username"]
         efficiency = config["Duino-Coin-PC-Miner"]["efficiency"]
         threadcount = config["Duino-Coin-PC-Miner"]["threads"]
